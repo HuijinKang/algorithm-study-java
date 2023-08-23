@@ -1,7 +1,7 @@
-import programmers.introduction.No011;
-import programmers.introduction.No012;
-import programmers.introduction.No013;
-import programmers.introduction.No016;
+import programmers.introduction.*;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,11 +23,32 @@ public class Main {
 //        System.out.println(no013.solution(str));
 
 
-        No016 no016 = new No016();
+//        No016 no016 = new No016();
+//
+//        String str = "nice to meet you";
+//
+//        System.out.println(no016.solution(str));
 
-        String str = "nice to meet you";
 
-        System.out.println(no016.solution(str));
+//        No017 no017 = new No017();
+//
+//        int[] dd = {1, 2, 3, 4, 5};
+//
+//        System.out.println(Arrays.toString(no017.solution(dd)));
+
+
+//        No018 no018 = new No018();
+//
+//        String s = "jaron";
+//
+//        System.out.println(no018.solution(s));
+
+
+        No020 no020 = new No020();
+
+        int[] i = {1, 3, 5};
+
+        System.out.println(Arrays.toString(no020.solution(i, 1, 2)));
 
     }
 }
