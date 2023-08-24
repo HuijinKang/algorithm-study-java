@@ -44,11 +44,15 @@ public class Main {
 //        System.out.println(no018.solution(s));
 
 
-        No020 no020 = new No020();
+//        No020 no020 = new No020();
+//
+//        int[] i = {1, 3, 5};
+//
+//        System.out.println(Arrays.toString(no020.solution(i, 1, 2)));
 
-        int[] i = {1, 3, 5};
 
-        System.out.println(Arrays.toString(no020.solution(i, 1, 2)));
+        Test001 test001 = new Test001();
 
+        System.out.println(Arrays.toString(test001.solution(25,10,5,10)));
     }
 }
