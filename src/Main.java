@@ -53,6 +53,6 @@ public class Main {
 
         Test001 test001 = new Test001();
 
-        System.out.println(Arrays.toString(test001.solution(25,10,5,10)));
+        System.out.println(Arrays.toString(test001.solution(25,15,5,10)));
     }
 }
