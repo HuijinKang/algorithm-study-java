@@ -37,5 +37,7 @@ public class No027 { //TODO 다시 풀어볼 것
     public static void main(String[] args) {
         No027 no027 = new No027();
         System.out.println(no027.solution(4,99));
+        int i = 10;
+        System.out.println(i/=5);
     }
 }
