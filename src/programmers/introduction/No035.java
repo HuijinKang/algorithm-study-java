@@ -33,7 +33,6 @@ public class No035 {
                 j++;
             }
         }
-
         return answer;
     }
 
