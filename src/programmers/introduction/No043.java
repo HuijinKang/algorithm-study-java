@@ -1,5 +1,8 @@
 package programmers.introduction;
 //  구슬을 나누는 경우의 수
+
+import java.math.BigInteger;
+
 /**
     문제 설명
     머쓱이는 구슬을 친구들에게 나누어주려고 합니다. 구슬은 모두 다르게 생겼습니다. 머쓱이가 갖고 있는 구슬의 개수 balls와 친구들에게 나누어 줄 구슬 개수 share이 매개변수로 주어질 때, balls개의 구슬 중 share개의 구슬을 고르는 가능한 모든 경우의 수를 return 하는 solution 함수를 완성해주세요.
@@ -25,6 +28,11 @@ package programmers.introduction;
 */
 public class No043 { //TODO 이해될 때까지 볼 것
 
+    public static void main(String[] args) {
+        No043 no043 = new No043();
+        System.out.println(no043.solution4(100 ,30));
+    }
+
     public int solution(int balls, int share) { // 큰 수가 매개변수로 담길 경우 연산 오류
         long answer = 0;
         long n = balls; // 87178291200
@@ -37,7 +45,7 @@ public class No043 { //TODO 이해될 때까지 볼 것
         for (long x = m-1; x >= 1; x--){
             m *= x;
         }
-        for(long i = (n-1); i >= 1; i--){
+        for(long i = n-1; i >= 1; i--){
             n *= i;
         }System.out.println(n);
         answer = n/(nm*m);
@@ -61,8 +69,64 @@ public class No043 { //TODO 이해될 때까지 볼 것
         return (int)answer;
     }
 
-    public static void main(String[] args) {
-        No043 no043 = new No043();
-        System.out.println(no043.solution3(20 ,4));
+    //////////////////////////////////////////
+    public BigInteger factorial(long n) {
+        BigInteger one = BigInteger.valueOf(1);
+        BigInteger num = BigInteger.valueOf(n);
+        if (n == 1)
+            return one;
+        else
+            return num.multiply(factorial(n - 1));
     }
+
+    public BigInteger solution4(long balls, long share) {
+        if (balls == share) {
+            return BigInteger.valueOf(1);
+        }
+        return  factorial(balls).divide((factorial(balls - share).multiply(factorial(share))));
+    }
+    //////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

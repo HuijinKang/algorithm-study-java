@@ -24,6 +24,6 @@ public class StudyFactorial {
 
     public static void main(String[] args) {
         StudyFactorial studyFactorial = new StudyFactorial();
-        System.out.println(studyFactorial.factorial2(10));
+        System.out.println(studyFactorial.factorial2(15));
     }
 }
