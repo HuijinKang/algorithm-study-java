@@ -35,8 +35,6 @@ public class No039 {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>() ;
         Arrays.sort(emergency2, Collections.reverseOrder());
 
-        System.out.println(map);
-
         int i = 1;
         for (int hashMap : emergency2){
             map.put(i, hashMap);
