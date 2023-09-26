@@ -35,6 +35,7 @@ package programmers.introduction;
 public class No045 {
     public int solution(int[] numbers, int k) {
         int answer = 0;
+
         for (int i = 0, j =0; j < k; i+=2, j++){
             if (i == numbers.length+1 || i == numbers.length){
                 i -= numbers.length;
