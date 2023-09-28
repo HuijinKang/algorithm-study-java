@@ -42,7 +42,6 @@ public class No052 {
 
         return answer;
     }
-
     public static void main(String[] args) {
         No052 no052 = new No052();
         System.out.println(Arrays.toString(no052.solution(15)));
