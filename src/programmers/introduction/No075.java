@@ -24,6 +24,8 @@ package programmers.introduction;
 public class No075 {
     public int solution(int[][] dots) {
         int answer = 0;
+        int minX = 0;
+        int maxX = 0;
 
 
         return answer;
