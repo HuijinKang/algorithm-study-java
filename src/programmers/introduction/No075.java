@@ -24,10 +24,30 @@ package programmers.introduction;
 public class No075 {
     public int solution(int[][] dots) {
         int answer = 0;
-        int minX = 0;
-        int maxX = 0;
+        int minX = dots[0][0];
+        int maxX = dots[0][0];
+        int minY = dots[0][1];
+        int maxY = dots[0][1];
 
+        for(int i = 0; i < dots.length; i++) {
+            for (int j = 0; j < dots[i].length; j++) {
+                if(minX > dots[i][0]) {
+                    minX = dots[i][0];
+                }
+                if(maxX < dots[i][0]) {
+                    maxX = dots[i][0];
+                }
+                if(minY > dots[i][1]) {
+                    minY = dots[i][1];
+                }
+                if(maxY < dots[i][1]) {
+                    maxY = dots[i][1];
+                }
+            }
+        }
+        int x = maxX - minX;
+        int y = maxY - minY;
 
-        return answer;
+        return x * y;
     }
 }
