@@ -35,6 +35,34 @@ package programmers.lv0;
 public class No078 {
     public String solution(String polynomial) {
         String answer = "";
+        int x = 0;
+        int number = 0;
+        String[] arr = polynomial.split(" ");
+
+        for (String s : arr) {
+            if(s.equals("x")) {
+                x++;
+            } else if (s.length() >= 2 && s.replaceAll("[0-9]", "").equals("x")) {
+//            } else if (s.contains("x")도 가능) {
+                x += Integer.valueOf(s.replaceAll("x",""));
+            } else if (!s.equals("+")) {
+                number += Integer.valueOf(s);
+            }
+        }
+        if (x > 0 && number == 0) {
+            answer = String.valueOf(x)+"x";
+            if (x == 1) answer = "x";
+        } else if (x > 0 && number > 0) {
+            answer = String.valueOf(x)+"x" + " + " + String.valueOf(number);
+            if (x == 1)  answer = "x" + " + " + String.valueOf(number);
+        } else if (x == 0 && number > 0) {
+            answer = String.valueOf(number);
+        }
         return answer;
+    }
+
+    public static void main(String[] args) {
+        No078 no078 = new No078();
+        System.out.println(no078.solution("x + 0"));
     }
 }
