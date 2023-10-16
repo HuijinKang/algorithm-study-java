@@ -28,7 +28,7 @@ package programmers.lv0;
     모든 지역에 지뢰가 있으므로 안전지역은 없습니다. 따라서 0을 return합니다.
 */
 public class No082 {
-    public int solution(int[][] board) {
+    public int solution(int[][] board) { // TODO 다시 풀 문제
         int answer = 0;
         int[][] x = new int[board.length][board[0].length];
 
@@ -70,6 +70,7 @@ public class No082 {
                         x[i+1][j-1] = 1;
                         x[i+1][j] = 1;
                     } else if (i == 0 && j == 0) { // 왼쪽 대각선 위
+                        System.out.println(111);
                         if (board.length == 1) {
                             System.out.println(222);
                             x[i][j] = 1;
