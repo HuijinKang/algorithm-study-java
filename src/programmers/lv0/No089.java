@@ -29,9 +29,14 @@ package programmers.lv0;
 */
 public class No089 {
     public int solution(int chicken) {
-        int answer = 0;
+        int answer = 0; // 서비스 치킨 수
+        int coupon = chicken; // 쿠폰 개수
 
-
+        while (coupon >= 10) {
+            coupon -= 10;
+            coupon++;
+            answer++;
+        }
         return answer;
     }
 
