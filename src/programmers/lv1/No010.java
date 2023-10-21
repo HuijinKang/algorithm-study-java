@@ -23,12 +23,23 @@ public class No010 {
     public long solution(long n) {
         long answer = 0;
         double sqrt = Math.sqrt(n);
-        System.out.println(sqrt);
-        double d =  sqrt % 1;
-        System.out.println(d);
 
-        if (Math.pow(sqrt, 2) == n) {
-            answer = (long) Math.pow(sqrt + 1, 2);
+        if (Math.pow((long)sqrt, 2) == n) { // long 형변환을 해주면 자동으로 내림됨 ex) (long) 0.9 -> 0
+                answer = (long) Math.pow(sqrt + 1, 2);
+        } else {
+            answer = -1;
+        }
+        return answer;
+    }
+
+    public long solution2(long n) {
+        long answer = 0;
+        double sqrt = Math.sqrt(n);
+
+        if (sqrt % 1 == 0) { //TODO sqrt가 정수인 지 판별
+            if (Math.pow(sqrt, 2) == n) {
+                answer = (long) Math.pow(sqrt + 1, 2);
+            }
         } else {
             answer = -1;
         }
@@ -37,6 +48,6 @@ public class No010 {
 
     public static void main(String[] args) {
         No010 no010 = new No010();
-        System.out.println(no010.solution(120));
+        System.out.println(no010.solution(121));
     }
 }
