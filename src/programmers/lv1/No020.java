@@ -1,9 +1,7 @@
 package programmers.lv1;
 //  제일 작은 수 제거하기
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Stack;
+import java.util.*;
 
 /**
     문제 설명
@@ -20,20 +18,37 @@ import java.util.Stack;
     [10]	[-1]
 */
 public class No020 {
-    public int[] solution(Integer[] arr) {
+    public int[] solution(int[] arr) {
+        int min = arr[0];
+        List list = new ArrayList<>();
 
-
-        Arrays.sort(arr, Collections.reverseOrder());
-        Stack stack = new Stack();
-        stack.push(arr);
-        stack.pop();
-        if (stack.empty()) {
-            stack.push(-1);
+        for (int i : arr) {
+            list.add(i);
         }
 
-        int[] answer = stack.stream()
-                .mapToInt(Integer::)
-                .toArray();
+        for (int i : arr) {
+            if (min > i) {
+                min = i;
+            }
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).equals(min)) {
+                list.remove(i);
+            }
+        }
+
+        if (list.size() == 0) {
+            list.add(-1);
+        }
+
+        int[] answer = list.stream().mapToInt(i -> (int)i).toArray();
         return answer;
+    }
+
+    public static void main(String[] args) {
+        No020 no020 = new No020();
+        int[] arr = {4,1,5,7};
+        System.out.println(Arrays.toString(no020.solution(arr)));
     }
 }
