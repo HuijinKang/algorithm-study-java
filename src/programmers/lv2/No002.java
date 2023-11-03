@@ -32,6 +32,6 @@ public class No002 {
 
     public static void main(String[] args) {
         No002 no002 = new No002();
-        System.out.println(no002.solution("3people unFollowed   me"));
+        System.out.println(no002.solution("  for the  last wee   k  "));
     }
 }
