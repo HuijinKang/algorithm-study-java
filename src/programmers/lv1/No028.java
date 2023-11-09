@@ -1,53 +1,25 @@
 package programmers.lv1;
-//  이상한 문자 만들기
+//  행렬의 덧셈
 /**
-    문제 설명
-    문자열 s는 한 개 이상의 단어로 구성되어 있습니다. 각 단어는 하나 이상의 공백문자로 구분되어 있습니다. 각 단어의 짝수번째 알파벳은 대문자로,
-    홀수번째 알파벳은 소문자로 바꾼 문자열을 리턴하는 함수, solution을 완성하세요.
+ 문제 설명
+ 행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의 값을 서로 더한 결과가 됩니다. 2개의 행렬 arr1과 arr2를 입력받아, 행렬 덧셈의 결과를 반환하는 함수, solution을 완성해주세요.
 
-    제한 사항
-    문자열 전체의 짝/홀수 인덱스가 아니라, 단어(공백을 기준)별로 짝/홀수 인덱스를 판단해야합니다.
-    첫 번째 글자는 0번째 인덱스로 보아 짝수번째 알파벳으로 처리해야 합니다.
+ 제한 조건
+ 행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.
 
-    입출력 예
-    s	return
-    "try hello world"	"TrY HeLlO WoRlD"
-
-    입출력 예 설명
-    "try hello world"는 세 단어 "try", "hello", "world"로 구성되어 있습니다. 각 단어의 짝수번째 문자를 대문자로,
-    홀수번째 문자를 소문자로 바꾸면 "TrY", "HeLlO", "WoRlD"입니다. 따라서 "TrY HeLlO WoRlD" 를 리턴합니다.
-*/
+ 입출력 예
+ arr1	arr2	return
+ [[1,2],[2,3]]	[[3,4],[5,6]]	[[4,6],[7,9]]
+ [[1],[2]]	[[3],[4]]	[[4],[6]]
+ */
 public class No028 {
-    public String solution(String s) {
-        String answer = "";
-        String[] words = s.split("");
-        int index = 0;
+    public int[][] solution(int[][] arr1, int[][] arr2) {
+        int[][] answer = new int[arr1.length][arr1[1].length];
 
-        for (int i = 0; i < words.length; i++) {
-            if (words[i].equals(" ")) {
-                index = 0;
-            } else if (index % 2 == 0) {
-                words[i] = words[i].toUpperCase();
-                index++;
-            } else if (index % 2 != 0) {
-                words[i] = words[i].toLowerCase();
-                index++;
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr1[i].length; j++) {
+                answer[i][j] = arr1[i][j] + arr2[i][j];
             }
-            answer += words[i];
-        }
-
-        return answer;
-    }
-
-    public String solution2(String s) { //더 간결한 예제
-
-        String answer = "";
-        int cnt = 0;
-        String[] words = s.split("");
-
-        for(String word : words) {
-            cnt = word.contains(" ") ? 0 : cnt + 1;
-            answer += cnt%2 == 0 ? word.toLowerCase() : word.toUpperCase();
         }
 
         return answer;
