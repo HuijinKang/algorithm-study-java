@@ -18,20 +18,24 @@ package programmers.lv2;
     "for the last week"	"For The Last Week"
 */
 public class No002 {
-    public String solution(String s) {
-        String answer = "";
+    public StringBuilder solution(String s) {
+        StringBuilder answer = new StringBuilder();
         String[] arr = s.split(" ");
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == "") continue;
-            arr[i] = arr[i].substring(0,1).toUpperCase() + arr[i].substring(1).toLowerCase();
+        for (String word : arr) {
+            System.out.println(word);
+            if (word.equals(" ")) {
+                answer.append(word);
+            } else {
+                answer.append(word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase());
+            }
         }
-        answer = String.join(" ", arr);
+
         return answer;
     }
 
     public static void main(String[] args) {
         No002 no002 = new No002();
-        System.out.println(no002.solution("  for the  last wee   k  "));
+        System.out.println(no002.solution(" apple love "));
     }
 }
