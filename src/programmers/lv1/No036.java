@@ -30,6 +30,18 @@ package programmers.lv1;
 public class No036 {
     public int solution(int[] number) {
         int answer = 0;
+        int length = number.length;
+
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                for (int n = 0; n < length; n++) {
+                    if (number[i] + number[j] + number[n] == 0) {
+                        answer++;
+                    }
+                }
+            }
+        }
+
         return answer;
     }
 }
