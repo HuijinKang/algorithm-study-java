@@ -33,8 +33,8 @@ public class No036 {
         int length = number.length;
 
         for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length; j++) {
-                for (int n = 0; n < length; n++) {
+            for (int j = i+1; j < length; j++) {
+                for (int n = j+1; n < length; n++) {
                     if (number[i] + number[j] + number[n] == 0) {
                         answer++;
                     }
