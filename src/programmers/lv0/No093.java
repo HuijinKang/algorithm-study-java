@@ -30,24 +30,19 @@ import java.util.Arrays;
 */
 public class No093 {
     public int[] solution(int[] numlist, int n) {
-        int[] answer = new int[numlist.length];
-        int min = Math.abs(numlist[0] - n);
+        Arrays.sort(numlist);
 
         for (int i = 0; i < numlist.length; i++) {
             for (int j = 0; j < numlist.length; j++) {
-                if (numlist[j] - n == 0) {
-                    answer[i] = numlist[j];
-
-                    break;
-                } else if (Math.abs(numlist[j] - n) < min) {
-                    min = Math.abs(numlist[j] - n);
-                    answer[i] = numlist[j];
+                if (Math.abs(n - numlist[i]) <= Math.abs(n - numlist[j])) {
+                    int temp = numlist[i];
+                    numlist[i] = numlist[j];
+                    numlist[j] = temp;
                 }
             }
-
         }
 
-        return answer;
+        return numlist;
     }
 
     public static void main(String[] args) {
