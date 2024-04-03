@@ -23,4 +23,13 @@ public class No001 {
         answer = Arrays.stream(arr).mapToDouble(Double::valueOf).sum() / arr.length;
         return answer;
     }
+
+    public double solution2(int[] arr) {
+        double answer = 0;
+
+        for(int i : arr) {
+            answer += i;
+        }
+        return answer / arr.length;
+    }
 }

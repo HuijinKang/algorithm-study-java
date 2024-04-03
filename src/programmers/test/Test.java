@@ -6,11 +6,27 @@ import java.util.Arrays;
 public class Test {
     public static void main(String[] args){
         char[] charArr = {'a','b','c'};
+        int[] arr = {1, 2, 3};
+
+        int result = 0;
+
+        for(int i : arr) {
+            result += i;
+        }
+        System.out.println("result = " + result);
+
         String s = new String(charArr,0,2);
         System.out.println(s);
 
         String ss = "한글";
+        String ss2 = "한글";
+
         String gg = new String("힌글");
+
+        System.out.println("gg = "+gg.hashCode());
+
+
+
         String gg2 = gg;
         String sss = null;
         ss = ss.replace("한글", "ab"); // 기존 문자열 값이 바뀌진 않음.
