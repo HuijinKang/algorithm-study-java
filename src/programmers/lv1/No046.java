@@ -37,7 +37,19 @@ public class No046 {
     public int solution(int a, int b, int n) {
         int answer = 0;
 
+        while(n / a > 0) {
+            answer += n / a * b;
+            n = n / a * b + n % a;
+        }
 
         return answer;
+    }
+
+    public static void main(String[] args) {
+        No046 no046 = new No046();
+        System.out.println(20 / 3 * 1 + 20 % 3);
+        System.out.println(8 / 3 * 1 + 8 % 3);
+        System.out.println(4 / 3 * 1 + 4 % 3);
+        System.out.println(no046.solution(3, 1, 20));
     }
 }

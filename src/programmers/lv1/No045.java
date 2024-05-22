@@ -53,7 +53,7 @@ public class No045 {
 
     public static void main(String[] args) {
         No045 no045 = new No045();
-        int[] arr = {2,1,3,4,1};
-        System.out.println(no045.solution(arr));
+        int[] arr = {5,0,2,7};
+        System.out.println(Arrays.toString(no045.solution(arr)));
     }
 }
