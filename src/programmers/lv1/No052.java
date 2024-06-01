@@ -1,100 +1,38 @@
 package programmers.lv1;
-//  모의고사
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+//  기사단원의 무기
 /**
  문제 설명
- 수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다. 수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다.
+ 숫자나라 기사단의 각 기사에게는 1번부터 number까지 번호가 지정되어 있습니다. 기사들은 무기점에서 무기를 구매하려고 합니다.
+ 각 기사는 자신의 기사 번호의 약수 개수에 해당하는 공격력을 가진 무기를 구매하려 합니다. 단, 이웃나라와의 협약에 의해 공격력의 제한수치를 정하고,
+ 제한수치보다 큰 공격력을 가진 무기를 구매해야 하는 기사는 협약기관에서 정한 공격력을 가지는 무기를 구매해야 합니다.
+ 예를 들어, 15번으로 지정된 기사단원은 15의 약수가 1, 3, 5, 15로 4개 이므로, 공격력이 4인 무기를 구매합니다.
+ 만약, 이웃나라와의 협약으로 정해진 공격력의 제한수치가 3이고 제한수치를 초과한 기사가 사용할 무기의 공격력이 2라면, 15번으로 지정된 기사단원은 무기점에서공격력이
+ 2인 무기를 구매합니다. 무기를 만들 때, 무기의 공격력 1당 1kg의 철이 필요합니다. 그래서 무기점에서 무기를 모두 만들기 위해 필요한 철의 무게를 미리 계산하려 합니다.
+ 기사단원의 수를 나타내는 정수 number와 이웃나라와 협약으로 정해진 공격력의 제한수치를 나타내는 정수 limit와 제한수치를 초과한 기사가 사용할 무기의 공격력을
+ 나타내는 정수 power가 주어졌을 때, 무기점의 주인이 무기를 모두 만들기 위해 필요한 철의 무게를 return 하는 solution 함수를 완성하시오.
 
- 1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...
- 2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5, ...
- 3번 수포자가 찍는 방식: 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, ...
-
- 1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가 주어졌을 때, 가장 많은 문제를 맞힌 사람이 누구인지 배열에 담아 return 하도록 solution 함수를 작성해주세요.
-
- 제한 조건
- 시험은 최대 10,000 문제로 구성되어있습니다.
- 문제의 정답은 1, 2, 3, 4, 5중 하나입니다.
- 가장 높은 점수를 받은 사람이 여럿일 경우, return하는 값을 오름차순 정렬해주세요.
+ 제한사항
+ 1 ≤ number ≤ 100,000
+ 2 ≤ limit ≤ 100
+ 1 ≤ power ≤ limit
 
  입출력 예
- answers	    return
- [1,2,3,4,5]	[1]
- [1,3,2,4,2]	[1,2,3]
+ number	limit	power	result
+ 5	    3	    2	    10
+ 10	    3	    2	    21
 
  입출력 예 설명
  입출력 예 #1
- 수포자 1은 모든 문제를 맞혔습니다.
- 수포자 2는 모든 문제를 틀렸습니다.
- 수포자 3은 모든 문제를 틀렸습니다.
- 따라서 가장 문제를 많이 맞힌 사람은 수포자 1입니다.
+ 1부터 5까지의 약수의 개수는 순서대로 [1, 2, 2, 3, 2]개입니다. 모두 공격력 제한 수치인 3을 넘지 않기 때문에 필요한 철의 무게는 해당 수들의 합인 10이 됩니다.
+ 따라서 10을 return 합니다.
 
  입출력 예 #2
- 모든 사람이 2문제씩을 맞췄습니다.
+ 1부터 10까지의 약수의 개수는 순서대로 [1, 2, 2, 3, 2, 4, 2, 4, 3, 4]개입니다. 공격력의 제한수치가 3이기 때문에, 6, 8, 10번 기사는 공격력이 2인
+ 무기를 구매합니다. 따라서 해당 수들의 합인 21을 return 합니다.
 */
 public class No052 {
-    public int[] solution(int[] answers) {
-        int[][] pattern = {{1, 2, 3, 4, 5},{2, 1, 2, 3, 2, 4, 2, 5},{3, 3, 1, 1, 2, 2, 4, 4, 5, 5}};
-        int[] count = {0, 0, 0};
-        int patternIndex = 0;
-        List<Integer> HighestScorers = new ArrayList<>();
-
-        for (int i = 0; i < pattern.length; i++) {
-            for (int j = 0; j < answers.length; j++) {
-                if (pattern[i][patternIndex] == answers[j]) {
-                    count[i]++;
-                }
-                patternIndex++;
-
-                if (patternIndex == pattern[i].length){
-                    patternIndex = 0;
-                }
-            }
-            patternIndex = 0;
-        }
-        int highestScore = Arrays.stream(count).max().getAsInt();
-
-        for (int i = 0; i < count.length; i++) {
-            if (count[i] >= highestScore) {
-                HighestScorers.add(i + 1);
-            }
-        }
-        int[] answer = HighestScorers.stream().mapToInt(Integer::intValue).toArray();
-
+    public int solution(int number, int limit, int power) {
+        int answer = 0;
         return answer;
-    }
-
-    public int[] solution2(int[] answers) {
-        int[][] pattern = {{1, 2, 3, 4, 5},{2, 1, 2, 3, 2, 4, 2, 5},{3, 3, 1, 1, 2, 2, 4, 4, 5, 5}};
-        int[] count = {0, 0, 0};
-        List<Integer> HighestScorers = new ArrayList<>();
-
-        for (int i = 0; i < pattern.length; i++) {
-            for (int j = 0; j < answers.length; j++) {
-                if (answers[j] == pattern[i][j % pattern[i].length]) {
-                    count[i]++;
-                }
-            }
-        }
-        int highestScore = Arrays.stream(count).max().getAsInt();
-
-        for (int i = 0; i < count.length; i++) {
-            if (count[i] >= highestScore) {
-                HighestScorers.add(i + 1);
-            }
-        }
-        int[] answer = HighestScorers.stream().mapToInt(Integer::intValue).toArray();
-
-        return answer;
-    }
-
-    public static void main(String[] args) {
-        No052 no052 = new No052();
-        int[] answers = {3, 3, 3, 3, 2};
-
-        System.out.println(Arrays.toString(no052.solution2(answers)));
     }
 }
