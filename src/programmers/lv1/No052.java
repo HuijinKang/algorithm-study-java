@@ -1,5 +1,8 @@
 package programmers.lv1;
 //  기사단원의 무기
+
+import java.util.Arrays;
+
 /**
  문제 설명
  숫자나라 기사단의 각 기사에게는 1번부터 number까지 번호가 지정되어 있습니다. 기사들은 무기점에서 무기를 구매하려고 합니다.
@@ -33,6 +36,28 @@ package programmers.lv1;
 public class No052 {
     public int solution(int number, int limit, int power) {
         int answer = 0;
+        int index = 0;
+        int[] divisors = new int[number];
+
+        for (int i = 1; i <= number; i++) {
+            for (int j = 1; j * j <= i; j++) {
+                if (j * j == i) divisors[index]++;
+                else if (i % j == 0) divisors[index] += 2;
+
+                if (divisors[index] > limit) {
+                    divisors[index] = power;
+                    break;
+                }
+            }
+            index++;
+        }
+        answer = Arrays.stream(divisors).sum();
+
         return answer;
+    }
+
+    public static void main(String[] args) {
+        No052 no052 = new No052();
+        System.out.println(no052.solution(10, 3, 2));
     }
 }
