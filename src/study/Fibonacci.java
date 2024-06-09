@@ -6,7 +6,7 @@ package study;
     2 + 3 = 5
     3 + 5 = 8
 */
-public class StudyFibonacci {
+public class Fibonacci {
 
     // for
     public int fibonacci (int number) {
@@ -39,8 +39,21 @@ public class StudyFibonacci {
         }
     }
 
+    // Dynamic Programming(동적 계획법)
+    public int fibonacci3(int n) {
+        int[] answer = new int[n+1];
+        answer[0] = 0;
+        answer[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+            answer[i] = answer[i - 1] + answer[i - 2];
+        }
+
+        return answer[n];
+    }
+
     public static void main(String[] args) {
-        StudyFibonacci studyFibonacci = new StudyFibonacci();
-        System.out.println(studyFibonacci.fibonacci(40));
+        Fibonacci fibonacci = new Fibonacci();
+        System.out.println(fibonacci.fibonacci(40));
     }
 }

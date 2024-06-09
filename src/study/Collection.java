@@ -2,7 +2,7 @@ package study;
 
 import java.util.*;
 
-public class StudyCollection {
+public class Collection {
     public static void main(String[] args) {
 
         Set hashSet = new HashSet();

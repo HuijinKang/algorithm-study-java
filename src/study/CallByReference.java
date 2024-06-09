@@ -3,7 +3,7 @@ package study;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StudyCallByReference {
+public class CallByReference {
 
     static class User {
         private int age;

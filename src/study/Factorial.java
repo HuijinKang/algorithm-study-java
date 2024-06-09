@@ -3,7 +3,7 @@ package study;
 /**
     문제
 */
-public class StudyFactorial {
+public class Factorial {
 
     // for
     public int factorial(int number) {
@@ -23,7 +23,7 @@ public class StudyFactorial {
     }
 
     public static void main(String[] args) {
-        StudyFactorial studyFactorial = new StudyFactorial();
-        System.out.println(studyFactorial.factorial2(15));
+        Factorial factorial = new Factorial();
+        System.out.println(factorial.factorial2(15));
     }
 }
